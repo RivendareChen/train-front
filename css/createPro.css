@@ -1,0 +1,65 @@
+#head-box{
+    position: relative;
+    background-color: #ffffff;
+    height: 7%;
+    box-shadow: 1px 1px 1px #e9e9e9;
+}
+
+#main-box{
+    position: relative;
+    left: 20%;
+    width: 60%;
+    height: 120%;
+    border: 1px solid green;
+}
+
+#write-info{
+    position: relative;
+    top: 50px;
+    width: 100%;
+    border: 1px solid blue;
+    text-align: center;
+}
+
+#select-div{
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid purple;
+    text-align: center;
+}
+
+.select-btn{
+    position: relative;
+    height: 80%;
+    top:10%;
+    font-size: 20px;
+    margin-left: 100px;
+    border: 1px solid transparent;
+}
+
+
+.toolbar{
+    border: 1px solid #ccc;
+}
+.text{
+    border: 1px solid #ccc;
+    height: 400px;
+}
+
+#submit-box{
+    position: relative;
+    margin-top: 20px;
+    height: 50px;
+    border: 1px solid red;
+    text-align: center;
+}
+
+#submit-box button{
+    position: relative;
+    height: 80%;
+    top:10%;
+    font-size: 20px;
+    margin-left: 100px;
+}

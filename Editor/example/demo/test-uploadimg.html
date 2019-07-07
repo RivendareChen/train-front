@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wangEditor 上传图片</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" id="uploadForm">
+        <input id="file" type="file"/>
+    </form>
+    <div id="div3"></div>
+    <button id='sbmt'>ok</button>
+    <script type="text/javascript" src='../../jquery-3.3.1.min.js'></script>
+    <script type="text/javascript" src="../../release/wangEditor.js"></script>
+    <script type="text/javascript" src="../../axios.min.js"></script>
+
+    <script type="text/javascript">
+
+        // 封面有默认值 0-9 对应默认图片
+        let facePath = String(new Date().getTime()%10);
+        
+
+        var E = window.wangEditor
+
+        var editor1 = new E('#div3')
+        // 服务器地址
+        editor1.customConfig.uploadImgServer = '/upload-img';
+
+        editor1.customConfig.uploadImgHooks = {
+            // 上传之前
+            before: function(xhr, editor, files){
+                console.log(files[0]);
+            },
+            // 上传成功 插入成功
+            success: function(xhr, editor, result){
+                console.log('ok');
+            },
+            // 上传成功 插入失败
+            fail: function(xhr, editor, result){
+                console.log('bad');
+            },
+            // 上传就已经失败
+            error:function(xhr, editor){
+                 console.log('error');
+            },
+            // 上传超时
+            timeout: function(xhr, editor){
+                console.log('timeout');
+            }
+        }
+        editor1.create();
+
+        // 设置封面图片
+        $('#file').change(function(){
+            var formData = new FormData($("#uploadForm")[0])
+            formData.append('file', $('#file')[0].files[0]);
+            $.ajax({
+                url: '',
+                type: 'POST',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function(res) {
+                // 若上传成功至少要有 图片的id
+                alert(res.imgId);
+                facePath = res.imgId;
+            }).fail(function(res) {
+                alert('fail');
+            });
+        });
+        
+        // 创建
+        $('#sbmt').click(async function(){
+            let content = editor1.txt.html();
+            console.log(content);
+            try{
+                let res = await axios.post('', {
+                    title:  '',
+                    keywds: [],
+                    bookface: facePath,
+                    content: content
+                });
+            }catch(err){
+                 alert(err);
+            }
+        });
+    </script>
+</body>
+</html>

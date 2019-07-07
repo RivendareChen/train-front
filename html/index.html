@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>index</title>
+<script src="../js/vector.js"></script>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/axios.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+
+
+<body>
+<div id='head-box'>
+    <img id='brand' src='../images/brand.png'>
+</div>
+<div id="container">
+  <div id="output"></div>
+</div>
+<div id="login">
+    <div class="wrapper">
+        <div class="login">
+            <div class="container offset1 loginform">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="email" class="control-label fa fa-envelope"></label>
+                            <input id="email" type="email" name="email" placeholder="Email" tabindex="1" autofocus="autofocus" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label fa fa-asterisk"></label>
+                            <input id="password" type="password" name="password" placeholder="Password" tabindex="2" class="form-control input-medium">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <a href="http://www.google.com/" tabindex="5" class="btn pull-left btn-link text-muted">Forgot password?</a>
+                    <a href="javascript:void(0)" tabindex="6" class="btn btn-link text-muted" onclick="signUp()">Sign Up</a>
+                    <button class='btn my-primary' id='loginButton'>Login</button>
+                </div>
+              </div>
+    </div>
+</div>
+<div id='registerModel'>
+    <div id='registBlock'>
+        <div id = 'emailR'><input type='text' class='formal_input' id = 'emailRR' placeholder='email'></div>
+        <div id='passwordR1'><input type='password' class='formal_input' id='passwordRR1' placeholder='password'></div>
+        <div id='passwordR2'><input type='password' class='formal_input' id='passwordRR2' placeholder='password'></div>
+        <div id='faver'></div>  
+        <div id='registBtton'><button class='btn my-primary'>Sign Up</button></div>
+    </div>
+</div>
+<script src='../js/index.js'></script>
+</div>
+</body>
+</html>

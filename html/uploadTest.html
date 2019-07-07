@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>upload</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <script src='../js/jquery-3.3.1.min.js'></script>
+</head>
+
+<body>
+    <form enctype="multipart/form-data" id="uploadForm">
+        <input id="file" type="file"/>
+        <button id="upload" type="button">upload</button>
+    </form>
+    <script>
+        
+        // 点击创建文章
+        $('#upload').click(function(){
+        	var formData = new FormData($("#uploadForm")[0])
+            formData.append('file', $('#file')[0].files[0]);
+            $.ajax({
+                url: 'pictureupload',
+                type: 'POST',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function(res) {
+                alert('ok');
+            }).fail(function(res) {
+                alert('fail');
+            });
+            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+*{ padding:0; margin:0;}
+body{
+    background-color: #f6f6f6;
+    background-size: contain;
+    margin:0; 
+    padding:0;
+}
+
+/* head begin */
+.selectBtn{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    top: 20%;
+    border: 1px solid transparent;
+    background-color: white;
+    font-size: 15px;
+    color: #8790A4;
+}
+
+.selectBtn:hover{
+    color: dodgerblue;
+}
+
+.searchEl {background: #f6f6f6;}
+.searchEl input {
+  width: 100%;
+  height: 32px;
+  padding-left: 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  outline: none;
+  background: white;
+  color: #8790a4;
+  font-size: 14px;
+}
+.searchEl button {
+  position: absolute; 
+  top: 0;
+  right: 0px;
+  width: 42px;
+  height: 32px;
+  border: none;
+  background: #3485F7;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.searchEl button:before {
+  content: "\f002";
+  font-family: FontAwesome;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+#head-box{
+    position: relative;
+    background-color: #ffffff;
+    height: 7%;
+    box-shadow: 1px 1px 1px #e9e9e9;
+}
+
+
+
+#brand{
+    position: relative;
+    /* border: 3px solid black; */
+    height: 85%;
+    width: 10%;
+    top: 15%;
+    left: 15%;
+
+    background-image: url('../images/brand-home.png');
+    background-repeat:no-repeat;
+    background-size: 70% 80%;
+    text-align: center;
+}
+
+#project{
+    position: absolute;
+    /* border: 1px solid black;*/
+    height: 90%;
+    width: 3%;
+    top: 10%;
+    left:25%;
+    text-align: center;
+}
+
+#proSelected{
+    position: absolute;
+    background: #3485F7;
+    height: 8%;
+    width: 78%;
+    left: 11%;
+    top:92%;
+}
+
+#article{
+    position: absolute;
+    /* border: 1px solid black;*/
+    height: 90%;
+    width: 3%;
+    top: 10%;
+    left: 29%;
+    text-align: center;
+}
+
+#artSelected{
+    position: absolute;
+    background: #3485F7;
+    height: 8%;
+    width: 78%;
+    left: 11%;
+    top:92%;
+    display: none;
+}
+
+#author{
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 90%;
+    width: 3%;
+    top: 10%;
+    left:33%;
+    text-align: center;
+}
+
+#autSelected{
+    position: absolute;
+    background: #3485F7;
+    height: 8%;
+    width: 78%;
+    left: 11%;
+    top:92%;
+    display: none;
+}
+
+#search{
+    position: absolute;
+    /* border: 3px solid black; */
+    height: 40%;
+    width: 20%;
+    top: 25%;
+    left:40%;
+    text-align: center;
+}
+
+#searchBtn{
+    position: absolute;
+    border: 1px solid black;
+    height: 40%;
+    width: 3%;
+    top: 25%;
+    left:61%;
+    text-align: center;
+}
+
+#msg{
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 50%;
+    width: 5%;
+    top: 20%;
+    left:71%;   
+    text-align: center;
+}
+
+#mine{
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 50%;
+    width: 5%;
+    top: 25%;
+    left:76%;
+    text-align: center;
+}
+
+#logout{
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 50%;
+    width:  5%;
+    top:    25%;
+    left:   81%;
+    text-align: center;
+}
+
+#mine button{
+    position: relative;
+    background-color: white;
+    border: 1px solid transparent;
+    width: 37%;
+    height: 37%;
+    top: 15%;
+    font-size: 25px;
+    color:#8790A4;
+}
+
+#mine button:hover{
+    color: #8e8e8e;
+}
+
+
+#logout button{
+    position: relative;
+    background-color: white;
+    border: 1px solid transparent;
+    width: 37%;
+    height: 37%;
+    top: 15%;
+    font-size: 25px;
+    color:#8790A4;
+}
+
+#logout button:hover{
+    color: #8e8e8e;
+}
+
+
+
+
+/* head end */
+
+#main{
+    position: absolute;
+    /* border: 1px solid black; */
+    height: 120%;
+    width: 70%;
+    top: 8%;
+    left: 15%;
+    
+}
+
+/* main begin */
+#main-box{
+    position: absolute;
+    background-color: #ffffff;
+    height: 100%;
+    width: 70%;
+    top:  0%;
+    left: 0%;
+    box-shadow: 1px 1px 1px #e9e9e9;
+}
+
+#selectedTitle{
+    position: absolute;
+    height: 4%;
+    width: 100%;
+    border-bottom: 1px solid #F0F2F7;
+    
+}
+#selectedTitle h1{
+    position: absolute;
+    height: 50%;
+    width: 20%;
+    top:0%;
+    left: 5%;
+    font-size: 18px;
+    font-family: Georgia, serif;
+    color:#3485F7;
+}
+
+.diviceLine{
+    position: absolute;
+    height: 4%;
+    width: 100%;
+    border-bottom: 1px solid #F0F2F7;
+}
+
+
+/* main end */
+
+
+/* create begin */
+#create-box{
+    position: absolute;
+    background-color: #ffffff;
+    height: 15%;
+    width: 29%;
+    top: 0%;
+    left:71%;
+    box-shadow: 1px 1px 1px #e9e9e9;
+}
+/* create end */
+
+/* suggest begin */
+
+#suggest-box{
+    position: absolute;
+    background-color: white;
+    height: 25%;
+    width: 29%;
+    top:16%;
+    left:71%;
+    box-shadow: 1px 1px 1px #e9e9e9;
+}
+
+.suggest-item{
+    position: relative;
+    border: 1px solid black;
+    height: 15%;
+    width: 100%;
+    top:5%;
+    left: 0px;
+}
+.suggest-item h4{
+    position: relative;
+    left: 10%;
+    top:25%;
+    color: #8790A4
+}
+
+.suggest-item:hover{
+    background-color: #F6F6F6;
+}
+
+/* suggest end */
+#foot-box{
+    position: absolute;
+    background-color: #ffffff;
+    height: 100px;
+    width: 100%;
+    top: 200%;
+    left: 0%;
+}
+/* foot */
+
+
+
+
