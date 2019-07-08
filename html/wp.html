@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>wp</title>
+    <link rel="stylesheet" type="text/css" href="../css/wp.css">
     <script type="text/javascript" src='../js/jquery-3.3.1.min.js'></script>
     <script type="text/javascript" src="../Editor/release/wangEditor.js"></script>
     <script type="text/javascript" src="../js/axios.min.js"></script>
+    <script type="text/javascript" src="../js/wp.js"></script>
 </head>
 <body>
-    <form enctype="multipart/form-data" id="uploadForm">
-        <input id="file" type="file"/>
-    </form>
-    <div id="div3"></div>
-    <button id='sbmt'>ok</button>
-    <script type="text/javascript" src="../js/wp.js"></script>
+    <div id='head-box'></div>
+    <div id='main-box'>
+        <div id='img-box'>
+            <form enctype="multipart/form-data" id="uploadForm"><input id="file" type="file"/></form>
+        </div>
+        <div id='title-box'>
+            文章标题: <input type='text'>
+        </div>
+        <div id='editor-box'>
+            <div id="div3"></div>
+        </div>
+        <div id='submit-box'>
+            <button id='sbmt'>ok</button>
+        </div>
+    </div>
+    <div id='foot-box'></div>
 </body>
 </html>
