@@ -1,16 +1,23 @@
-let postInfo = {
-    articleID: '',
-};
+let herfArray = window.location.href.split('/');
+let projectId = herfArray[herfArray.length-1];
 
 let testInfo = {
-    isAuthor: true,        // 浏览者是否为文章作者
-    status: 1,                // 文章状态是否正常
-    title: 'testArticle',     // 文章标题
-    Content: '<p>hello world</p><p>hello world</p>', // 文章内容
-    username: 'Rivendare',    // 文章作者
-    image: '../images/1.jpg', // 封面图片url
-    topcomment: '3',          // 置顶评论ID
+    // 基本信息
+    projectName: 'testPro', // 项目名称
+    productName: '软件系统', // 产品类型
+    projectType: '互联网/软件',    // 行业 选择
+    projectLocal: '重庆市',     // 项目地点 选择(省份)
+    investmentScale: '100',   // 投资规模(万)
+    contactInfo: '824857523',  // 联系方式
+    album:  '../images/1.jpg',  // 封面
     
+    // 详情信息
+    mainInfo: '<p>hello world</p>', // 项目介绍
+    advantageInfo: '<p>hello world</p><p>hello world</p><p>hello world</p>', //项目优势
+    parseInfo: '<p>hello world</p><p>hello world</p>', // 项目进展
+
+    // 评论
+    topcomment: '3',          // 置顶评论ID
     comments:[
         {
             articleCommentID: '0',
@@ -78,7 +85,7 @@ function subLayer(){
             console.log(submitContent);
             /* 向后端传输
             let res = await axios.post('',{
-                id: '',  //文章id
+                id: projectId,  //文章id
                 content: submitContent
             }); */
             if(true){   // 不出意外的话 res.status == 1
@@ -95,41 +102,86 @@ function subLayer(){
             alert(err);
         }
     });
-
 }
 
 
-function findAuthor(re_id){
-    for(let i of testInfo.comments){
-        if(i.articleCommentID == re_id){
-            return i.username;
-        }
+
+
+function tagToInfo(tag){
+    if(tag == 'select-main'){
+        return 'mainInfo';
+    }else if(tag == 'select-advantage'){
+        return  'advantageInfo';
+    }else{
+        return 'parseInfo';
     }
-    return 'unknown';
 }
 
 
+(async ()=>{
+    // 当前选择的tag
+    let currTag = 'select-main';
 
-
-(async()=>{
-
-    // 获取服务器数据
+    // 获取数据
     /*
     try{
-        testInfo = await axios.post('',postInfo);
+        var testInfo = axios.post('', {
+            id: projectId,
+        });
+        
     }catch(err){
         alert(err);
     }
     */
 
-    
-    
     $(async function(){
-        // 加载文章内容
-        $('#main-box').append(testInfo.Content);
+
+        // 显示封面图片
+        $('#img-box').css('background-image', `url('${testInfo.album}')`);
+
+        // 插入信息
+        $('#i-box').append(
+            `<h3>${testInfo.projectName}</h3>
+             <p>产品类型: ${testInfo.productName}</p>
+             <p>所属行业: ${testInfo.projectType}</p>
+             <p>创业地点: ${testInfo.projectLocal}</p>
+             <p>投资规模: ${testInfo.investmentScale}(万)</p>
+             <p>联系方式: ${testInfo.contactInfo}</p>`
+        );
+        // 初始化内容
+        $('#text-content').append(testInfo.mainInfo);
+
+        // 内容标签选择
+        // 颜色初始化
+        $('#select-main').css('color', 'black');
+        $('#select-advantage').css('color', '#8790A4');
+        $('#select-parse').css('color', '#8790A4');
+        // 响应函数绑定
+        $('#select-main').click(function(){
+            $('#select-main').css('color', 'black');
+            $('#select-advantage').css('color', '#8790A4');
+            $('#select-parse').css('color', '#8790A4');
+            // 替换内容
+            $('#text-content').html(testInfo.mainInfo);
+        });
+        $('#select-advantage').click(function(){
+            $('#select-main').css('color', '#8790A4');
+            $('#select-advantage').css('color', 'black');
+            $('#select-parse').css('color', '#8790A4');
+            // 替换内容
+            $('#text-content').html(testInfo.advantageInfo);
+        });
+        $('#select-parse').click(function(){
+            $('#select-main').css('color', '#8790A4');
+            $('#select-advantage').css('color', '#8790A4');
+            $('#select-parse').css('color', 'black');
+            // 替换内容
+            $('#text-content').html(testInfo.parseInfo);
+        });
 
         
-        //加载评论
+        // 评论
+        // 加载评论
         // 插入置顶评论
         for(let i of testInfo.comments){
             if(i.articleCommentID == testInfo.topcomment && i.re_ArticleCommentID==''){
@@ -188,7 +240,7 @@ function findAuthor(re_id){
             try{
                 /*
                 let res = await axios.post('',{
-                    id: '',  //文章id
+                    id: projectId,  //文章id
                     content: submitContent
                 });
                 */
@@ -215,6 +267,5 @@ function findAuthor(re_id){
 
         // 显示评论框 按钮
         $('.subcomClass').click(subLayer);
-
     });
 })();

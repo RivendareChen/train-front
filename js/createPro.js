@@ -1,4 +1,5 @@
 const localArray = [
+    '请选择地域',
     '北京市', '天津市', '上海市', '重庆市', '香港特别行政区', '澳门特别行政区',
     '浙江省', '江苏省', '四川省', '山东省', '河南省', '河北省', '贵州省',
     '湖南省', '湖北省', '江西省', '安徽省', '福建省', '台湾省', '西藏省',
@@ -7,6 +8,7 @@ const localArray = [
 ];
 
 const typeArray = [
+    '请选择行业',
     '互联网/软件', '餐饮', '土木建筑', '金融/投资', '通信/电子', '数码/家电',
     '装修', '外贸/出口', '零售'
 ];
@@ -70,8 +72,6 @@ function tagToInfo(tag){
 }
 
 
-
-
 (async ()=>{
     // 当前选择的tag
     let currTag = 'select-main';
@@ -92,6 +92,12 @@ function tagToInfo(tag){
             );
         }
 
+        $('#overinfo').hover(function(){
+            $('#overinfo').html('&nbsp&nbsp上传封面');
+        }, function(){
+            $('#overinfo').html('');
+        });
+
         // 上传封面
         $('#uploadForm').change(function(){
             var formData = new FormData($("#uploadForm")[0])
@@ -106,6 +112,8 @@ function tagToInfo(tag){
             }).done(function(res) {
                 alert('ok');
                 //testInfo.album =  '' 返回路径
+                testInfo.album = '../images/1.jpg';
+                $('#overinfo').css('background-image', `url('${testInfo.album}')`);
             }).fail(function(res) {
                 alert('fail');
             });
@@ -166,7 +174,7 @@ function tagToInfo(tag){
             testInfo.contactInfo = $('#input-tel').val();
             testInfo.projectLocal = $('#select-local').children('select').val();
             testInfo.projectType = $('#select-type').children('select').val();
-
+            
             // 传值打印
             console.log(testInfo.projectName);
             console.log(testInfo.productName);
@@ -177,6 +185,7 @@ function tagToInfo(tag){
             console.log(testInfo.mainInfo);
             console.log(testInfo.advantageInfo);
             console.log(testInfo.parseInfo);
+            console.log(testInfo.album);
             console.log('_________________________________');
 
             //向后端发送

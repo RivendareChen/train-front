@@ -5,6 +5,9 @@ body{
     margin:0; 
     padding:0;
 }
+button{
+    outline: none;
+}
 
 /* head begin */
 .selectBtn{
@@ -280,6 +283,26 @@ body{
     left:71%;
     box-shadow: 1px 1px 1px #e9e9e9;
 }
+
+#create-pro{
+    position: relative;
+    width: 30%;
+    height: 20%;
+    top: 40%;
+    left: 10%;
+    font-size: 20px;
+    border: 1px solid transparent;
+}
+
+#create-art{
+    position: relative;
+    width: 30%;
+    height: 20%;
+    top: 40%;
+    left: 20%;
+    font-size: 20px;
+    border: 1px solid transparent;
+}
 /* create end */
 
 /* suggest begin */
@@ -296,7 +319,7 @@ body{
 
 .suggest-item{
     position: relative;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     height: 15%;
     width: 100%;
     top:5%;
@@ -324,6 +347,29 @@ body{
 }
 /* foot */
 
+
+
+/*  简介相关  */
+#items{
+    position: absolute;
+    /*border: 1px solid black;*/
+    top:5%; left: 5%;
+    width: 90%; height: 92%;
+    /*margin:60px auto 10px auto*/
+}
+.box{
+    position: relative;
+    width: 15%; height:50px; 
+    /*margin-top: 20%;*/
+}
+.clear{clear:both}
+.item-content{
+    position: relative;
+    width: 50%; height: 240px;
+    left: 5px;
+    float: top;
+    /*border: 1px solid black*/;
+}
 
 
 

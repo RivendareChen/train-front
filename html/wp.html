@@ -4,27 +4,36 @@
     <meta charset="UTF-8">
     <title>wp</title>
     <link rel="stylesheet" type="text/css" href="../css/wp.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
     <script type="text/javascript" src='../js/jquery-3.3.1.min.js'></script>
     <script type="text/javascript" src="../Editor/release/wangEditor.js"></script>
     <script type="text/javascript" src="../js/axios.min.js"></script>
     <script type="text/javascript" src="../js/wp.js"></script>
 </head>
 <body>
-    <div id='head-box'></div>
+    <div id='head-box'>
+        <div id='brand'></div>
+        <div id='divice'></div>
+        <div id='write'>写文章</div>
+    </div>
     <div id='main-box'>
         <div id='img-box'>
-            <form enctype="multipart/form-data" id="uploadForm"><input id="file" type="file"/></form>
+            <form enctype="multipart/form-data" id="uploadForm">
+                <input type="file" name="file" id="file" class="inputfile" />
+                <label for="file" class='fa fa-camera fa-2x' id='overinfo'></label>
+            </form>
         </div>
         <div id='title-box'>
-            文章标题: <input type='text'>
+            <input id='get-title' type='text' placeholder='请输入文章标题'>
+            <select id='get-type'><option name='1'>请选择内容类型</option></select>
         </div>
         <div id='editor-box'>
-            <div id="div3"></div>
+            <div id='editor-bar' class="toolbar"></div>
+            <div id='editor-text' class="text"></div>
         </div>
         <div id='submit-box'>
-            <button id='sbmt'>ok</button>
+            <button id='sbmt'>创建项目</button>
         </div>
     </div>
-    <div id='foot-box'></div>
 </body>
 </html>

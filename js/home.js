@@ -20,10 +20,6 @@ let testInfo  = {
             title:'test4', content:'hello world', author:'fucker',
             time:'2019-7-32', img:'../images/5.jpg', link:'http://www.baidu.com'
         },
-        {
-            title:'test5', content:'die die die', author:'lover',
-            time:'2019-7-32', img:'../images/6.jpg', link:'http://www.baidu.com'
-        },
     ],
     'article':[
         {
@@ -41,10 +37,6 @@ let testInfo  = {
         {
             title:'art4', content:'hello world', author:'fucker',
             time:'2019-7-32', img:'../images/4.jpg', link:'http://www.baidu.com'
-        },
-        {
-            title:'art5', content:'die die die', author:'lover',
-            time:'2019-7-32', img:'../images/5.jpg', link:'http://www.baidu.com'
         },
     ],
     'user':[
@@ -64,10 +56,6 @@ let testInfo  = {
             title:'usr4', content:'hello world', author:'fucker',
             time:'2019-7-32', img:'../images/9.jpg', link:'http://www.baidu.com'
         },
-        {
-            title:'usr5', content:'die die die', author:'lover',
-            time:'2019-7-32', img:'../images/10.jpg', link:'http://www.baidu.com'
-        },
     ],
     'suggest':[
         { title:'test1', author:'fucker', link:'http://www.baidu.com'},
@@ -78,11 +66,21 @@ let testInfo  = {
         { title:'test6', author:'lover',  link:'http://www.baidu.com'},
     ],
     'msg':[
-        {text: "m1", link: '1', id:'0', readStatus: 0},
-        {text: "m2", link: '2', id:'1', readStatus: 0},
-        {text: "m3", link: '0', id:'2', readStatus: 0},
+        {text: "m1", link: 'http://www.baidu.com', id:'0', readStatus: 0},
+        {text: "m2", link: 'http://www.baidu.com', id:'1', readStatus: 0},
+        {text: "m3", link: 'http://www.baidu.com', id:'2', readStatus: 0},
     ]
 };
+
+let searchResults = {
+    results: [
+        {name: 'pro1', type:'项目', img:'../images/6.jpg', link: 'http://www.baidu.com'},
+        {name: 'pro2', type:'项目', img:'../images/7.jpg', link: 'http://www.baidu.com'},
+        {name: 'art1', type:'文章', img:'../images/8.jpg', link: 'http://www.baidu.com'},
+        {name: 'chy', type: '用户', img:'../images/9.jpg', ink: 'http://www.baidu.com'},
+    ]
+};
+
 
 
 // 获取信息格式
@@ -111,7 +109,7 @@ let testInfo  = {
                 msgClick: function(obj) {
                     for(let msgItem of this.msgData){
                         if(msgItem.text == obj.innerText){
-                            alert(msgItem.link);
+                            window.location.href = msgItem.link;
                             //设置已读
                             /*
                             try{
@@ -146,21 +144,22 @@ let testInfo  = {
     
         // 初始化 主要推荐
         let cnt = 0;
-        let offset = 20;
         for(let i of testInfo.main){
-            cnt++, offset+=30;
+            cnt++;
             //let lineOffert = cnt*20;
-            $('#main-box')
+            $('#items')
             .append(
-                `<div class="grid" id='row${String(cnt)}' style="top: ${offsets[cnt]}% ; ">
-                <figure class="effect-marley" style="left: 8% ;width:50%; ">
-                <img src="${i.img}" alt="img09"/>
-                <figcaption>
-                <h2>项目 <span>${i.title}</span></h2>
-                <p>${i.content}</p>               		                    
-                <a href="${i.link}">View more</a>
-                </figcaption></figure></div>
-                <div class='diviceLine' style="top: ${lineOfferts[cnt]}%"></div>
+                `
+                <div id="box${String(cnt)}" style="top: ${cnt*10}% ; width: 100% ; margin-top: 30px; display: -webkit-box;">
+				<div class="he_border1">
+					<img class="he_border1_img" src="${i.img}" alt="Image 01">
+					<div class="he_border1_caption">
+						<h3 class="he_border1_caption_h">${i.title}</h3>
+                        <p class="he_border1_caption_p">作者: ${i.author}</p><br>
+						<a class="he_border1_caption_a" href="${i.link}"></a>
+					</div>
+                </div>
+			    </div>
                 `
             );
         }
@@ -186,15 +185,58 @@ let testInfo  = {
             $('#proSelected').css('display', 'block');
             $('#artSelected').css('display', 'none');
             $('#autSelected').css('display', 'none');
-            flashMainBox(testInfo.main);
-            
+            $('#items').html('');
+            let cnt = 0;
+            for(let i of testInfo.main){
+                cnt++;
+                //let lineOffert = cnt*20;
+                $('#items')
+                .append(
+                    `
+                    <div id="box${String(cnt)}" style="top: ${cnt*10}% ; width: 100% ; margin-top: 30px; display: -webkit-box;">
+                    <div class="he_border1">
+                        <img class="he_border1_img" src="${i.img}" alt="Image 01">
+                        <div class="he_border1_caption">
+                            <h3 class="he_border1_caption_h">${i.title}</h3>
+                            <p class="he_border1_caption_p">作者: ${i.author}</p><br>
+                            <a class="he_border1_caption_a" href="${i.link}"></a>
+                        </div>
+                    </div>
+                    </div>
+                    `
+                );
+            }
         });
     
         $('#artBtn').click(function(){
             $('#artSelected').css('display', 'block');
             $('#proSelected').css('display', 'none');
             $('#autSelected').css('display', 'none');
-            flashMainBox(testInfo.article);
+            $('#items').html('');
+            let cnt = 0;
+            for(let i of testInfo.article){
+                cnt++;
+                //let lineOffert = cnt*20;
+                $('#items')
+                .append(
+                    `
+                    <div id="box${String(cnt)}" style="top: ${cnt*10}% ; width: 100% ; margin-top: 30px; display: -webkit-box;">
+                    <div class="he_3DFlipX">
+                        <div class="he_3DFlipX_inner">
+                        <div class="he_3DFlipX_img">
+                            <img src="${i.img}" alt="img">
+                        </div>
+                        <div class="he_3DFlipX_caption">
+                            <h3>${i.title}</h3>
+                            <p>作者:${i.author}</p>
+                        </div>
+                        <a href="${i.link}"></a>
+                        </div>
+                        </div>
+                    </div>
+                    `
+                );
+            }
     
         });
     
@@ -202,20 +244,95 @@ let testInfo  = {
             $('#autSelected').css('display', 'block');
             $('#artSelected').css('display', 'none');
             $('#proSelected').css('display', 'none');
-            flashMainBox(testInfo.user);
+            $('#items').html('');
+            let cnt = 0;
+            for(let i of testInfo.user){
+                cnt++;
+                //let lineOffert = cnt*20;
+                $('#items')
+                .append(
+                    `
+                    <div id="box${String(cnt)}" style="top: ${cnt*10}% ; width: 100% ; margin-top: 30px; display: -webkit-box;">
+                        <div class="he_slideCaptionDown">
+                        <img class="he_slideCaptionDown_img" src="${i.img}" alt="Image 01">
+                        <div class="he_slideCaptionDown_caption">
+                        <h3 class="he_slideCaptionDown_caption_h">${i.author}</h3>
+                        <p class="he_slideCaptionDown_caption_p">创业帮资深用户</p>
+                        <a class="he_slideCaptionDown_caption_a" href="${i.link}"></a>
+                        </div>
+                        </div>
+                    </div>
+                    `
+                );
+            }
         });
-    
+        
+        // 搜索
+        $('#searchAll').click(async function(){
+            //alert($('#searchBar').val());
+            /*
+            try{
+                let res = await axios.post('',{
+                    content: $('#searchBar').val()
+                });
+                if(true){
+                    searchResults = res.data;
+                    // TODO
+                }
+            }catch(err){
+                alert(err);
+            }*/
+            $('#autSelected').css('display', 'none');
+            $('#artSelected').css('display', 'none');
+            $('#proSelected').css('display', 'none');
+            $('#items').html('');
+            $('#selectedTitle').find('h1').html('搜索结果');
+            let cnt = 0;
+            for(let i of searchResults.results){
+                cnt++;
+                //let lineOffert = cnt*20;
+                $('#items')
+                .append(
+                    `
+                    <div id="box${String(cnt)}" style="top: ${cnt*10}% ; width: 100% ; margin-top: 30px; display: -webkit-box;">
+                    <div class="he_border1">
+                        <img class="he_border1_img" src="${i.img}" alt="Image 01">
+                        <div class="he_border1_caption">
+                            <h3 class="he_border1_caption_h">${i.name}</h3>
+                            <p class="he_border1_caption_p">分类: ${i.type}</p>
+                            <a class="he_border1_caption_a" href="${i.link}"></a>
+                        </div>
+                    </div>
+                    </div>
+                    `
+                );
+            }
+            
+        });
     
         // 个人中心 
         $('#mineBtn').click(function(){
             alert('跳转个人中心');
-            //TODO
+            // window.location.href = ''; 
         });
     
         // 注销
         $('#logoutBtn').click(function(){
             alert('注销');
-            // TODO
+            // 删除 cookie
+            // window.location.href = ''; 
+        });
+
+        
+        // 绑定创作函数
+        $('#create-pro').click(function(){
+            alert('创建项目')
+            // window.location.href = '';
+        });
+
+        $('#create-art').click(function(){
+             alert('创建文章')
+             // window.location.href = '';
         });
     
     
@@ -225,39 +342,14 @@ let testInfo  = {
             let curr = '#suggest' + String(parseInt(i)+1);
             $(curr).click(function(){
                 // TODO
-                alert(testInfo.suggest[parseInt(i)].link);
+                // alert(testInfo.suggest[parseInt(i)].link);
+                window.location.href = testInfo.suggest[parseInt(i)].link;
             });
         } 
     });
 })();
 
 
-function flashMainBox(info){
-    // 删除项目
-    for(let i=1 ; i<6; i++){
-        $('#row'+i).remove();
-    }
-    // 新增项目
-    let cnt = 0;
-    let offset = 20;
-    for(let i of info){
-        cnt++, offset+=30;
-        //let lineOffert = cnt*20;
-        $('#main-box')
-        .append(
-            `<div class="grid" id='row${String(cnt)}' style="top: ${offsets[cnt]}% ; ">
-            <figure class="effect-marley" style="left: 8% ;width:50%; ">
-            <img src="${i.img}" alt="img09"/>
-            <figcaption>
-            <h2>项目 <span>${i.title}</span></h2>
-            <p>${i.content}</p>               		                    
-            <a href="${i.link}">View more</a>
-            </figcaption></figure></div>
-            <div class='diviceLine' style="top: ${lineOfferts[cnt]}%"></div>
-            `
-        );
-    }
-}
 
 
 

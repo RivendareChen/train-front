@@ -5,22 +5,34 @@
         <script src='../js/axios.min.js'></script>
         <script type="text/javascript" src="../Editor/release/wangEditor.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/createPro.css">
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
         <script src='../js/createPro.js'></script>
     </head>
     <body>
-        <div id='head-box'></div>
+        <div id='head-box'>
+            <div id='brand'></div>
+            <div id='divice'></div>
+            <div id='write'>建项目</div>
+        </div>
         <div id='main-box'>
+            <div id='head-info' style="margin:10px">基本信息</div>
             <div id='write-info'>
-                <form enctype="multipart/form-data" id="uploadForm">
-                    <input id="file" type="file"/>
-                </form>
-                <div> 项目名称: <input type='text' id='input-name'/></div>
-                <div> 产品类型: <input type='text' id='input-product'/></div>
-                <div> 投资规模: <input type='text' id='input-scale'/></div>
-                <div> 联系方式: <input type='text' id='input-tel'/></div>
-                <div id='select-local'> 项目区域: <select></select></div>
-                <div id='select-type'>  项目行业: <select></select></div>
+                <div id='img-box'>
+                    <form enctype="multipart/form-data" id="uploadForm">
+                        <input id="file" type="file" name="file" class="inputfile"/>
+                        <label for="file" class='fa fa-camera fa-2x' id='overinfo'></label>
+                    </form>
+                </div>
+                <div id='i-box'>
+                    <div><input type='text' id='input-name' placeholder='项目名称' class='i-input'/></div>
+                    <div><input type='text' id='input-product' placeholder='产品类型' class='i-input'/></div>
+                    <div><input type='text' id='input-scale' placeholder='投资规模' class='i-input'/></div>
+                    <div><input type='text' id='input-tel'  placeholder='联系方式' class='i-input'/></div>
+                    <div id='select-local'><select class='i-select'></select></div>
+                    <div id='select-type'><select class='i-select'></select></div>
+                </div>
             </div>
+            <div id='head-info' style="margin:10px">详情信息</div>
             <div id='select-div'>
                 <button id='select-main' class='select-btn'>项目介绍</button>
                 <button id='select-advantage' class='select-btn'>项目优势</button>
@@ -31,7 +43,7 @@
             <div id='editor-text' class="text"></div>
 
             <div id='submit-box'>
-                <button>提交</button>
+                <button>创建项目</button>
             </div>
         </div>
     </body>
